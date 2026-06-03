@@ -18,17 +18,16 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           display: flex;
           flex-direction: column;
           justify-content: center;
-          padding: 48px;
-          background: linear-gradient(135deg, #09090f 0%, #121224 100%);
-          border-right: 1px solid rgba(255, 255, 255, 0.08);
+          padding: 64px;
+          background: linear-gradient(135deg, #fdf4ff 0%, #e0e7ff 100%);
+          border-right: 1px solid rgba(0, 0, 0, 0.05);
           position: relative;
           overflow: hidden;
           
-          --text-primary: #ffffff;
-          --text-secondary: #cbd5e1;
-          --accent: #4ade80;
-          --accent-glow: rgba(74, 222, 128, 0.35);
-          --border: rgba(255, 255, 255, 0.04);
+          --text-primary: #1e1b4b;
+          --text-secondary: #4f46e5;
+          --accent: #8b5cf6;
+          --border: rgba(0, 0, 0, 0.03);
         }
 
         .auth-left::before {
@@ -38,7 +37,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           left: -200px;
           width: 500px;
           height: 500px;
-          background: radial-gradient(circle, rgba(74, 222, 159, 0.08) 0%, transparent 70%);
+          background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, transparent 70%);
           pointer-events: none;
         }
 
@@ -49,72 +48,50 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           right: -100px;
           width: 400px;
           height: 400px;
-          background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, transparent 70%);
+          background: radial-gradient(circle, rgba(236, 72, 153, 0.08) 0%, transparent 70%);
           pointer-events: none;
         }
 
         .brand {
           position: relative;
           z-index: 1;
-          margin-bottom: 64px;
+          margin-bottom: 48px;
         }
 
         .brand-logo {
           display: flex;
           align-items: center;
-          gap: 12px;
-          margin-bottom: 48px;
-        }
-
-        .brand-icon {
-          width: 44px;
-          height: 44px;
-          background: var(--accent);
-          border-radius: 10px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 20px;
-          box-shadow: var(--shadow-accent);
+          margin-bottom: 32px;
         }
 
         .brand-name {
           font-family: var(--font-display);
-          font-size: 22px;
-          font-weight: 700;
+          font-size: 26px;
+          font-weight: 800;
           color: var(--text-primary);
-          letter-spacing: -0.3px;
-        }
-
-        .brand-tagline {
-          font-family: var(--font-mono);
-          font-size: 11px;
-          color: var(--accent);
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          margin-top: 2px;
+          letter-spacing: -0.5px;
         }
 
         .hero-title {
           font-family: var(--font-display);
-          font-size: 42px;
+          font-size: 48px;
           font-weight: 800;
-          line-height: 1.1;
+          line-height: 1.15;
           color: var(--text-primary);
-          margin-bottom: 20px;
-          letter-spacing: -1px;
+          margin-bottom: 24px;
+          letter-spacing: -1.2px;
         }
 
         .hero-title span {
-          color: var(--accent);
+          color: var(--text-secondary);
         }
 
         .hero-desc {
           font-size: 15px;
-          color: var(--text-secondary);
-          line-height: 1.7;
-          max-width: 380px;
-          margin-bottom: 48px;
+          color: #52525b;
+          line-height: 1.75;
+          max-width: 420px;
+          margin-bottom: 0;
         }
 
         .feature-list {
