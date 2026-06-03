@@ -177,10 +177,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         <div className="brand">
           <div className="brand-logo">
             <div className="brand-icon">⚗️</div>
-            <div>
-              <div className="brand-name">AasaMedChem</div>
-              <div className="brand-tagline">Inventory Management</div>
-            </div>
+            <div className="brand-name">AasaMedChem</div>
           </div>
           <h1 className="hero-title">
             Precision<br />
@@ -191,19 +188,6 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
             Manage pharmaceutical and chemical inventory with exact unit conversions, 
             real-time pricing in INR, and streamlined quotation workflows.
           </p>
-          <div className="feature-list">
-            {[
-              "Multi-unit inventory: g, kg, mL, L, items",
-              "Real-time INR pricing with auto-conversion",
-              "Role-based access: Admin & Seller",
-              "Quotation & order management",
-            ].map((f) => (
-              <div className="feature-item" key={f}>
-                <div className="feature-dot" />
-                <span className="feature-text">{f}</span>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
 
