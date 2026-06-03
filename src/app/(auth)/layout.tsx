@@ -153,7 +153,6 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         <div className="grid-overlay" />
         <div className="brand">
           <div className="brand-logo">
-            <div className="brand-icon">⚗️</div>
             <div className="brand-name">AasaMedChem</div>
           </div>
           <h1 className="hero-title">
