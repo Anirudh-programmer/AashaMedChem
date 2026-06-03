@@ -1,0 +1,61 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Product {
+  id                String   @id @default(cuid())
+  name              String
+  sku               String   @unique
+  category          String
+  description       String   @default("")
+  baseUnit          String   // e.g. "g", "kg", "mL", "L", "unit"
+  basePrice         Decimal  @db.Decimal(20, 6) // Price in INR per base unit
+  stock             Decimal  @db.Decimal(20, 6) // Current stock in base unit
+  lowStockThreshold Decimal  @db.Decimal(20, 6) // Low stock threshold in base unit
+  status            String   @default("active") // "active" or "inactive"
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  inventoryHistory  InventoryHistory[]
+}
+
+model InventoryHistory {
+  id          String   @id @default(cuid())
+  productId   String
+  product     Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  changeQty   Decimal  @db.Decimal(20, 6) // positive or negative
+  newQty      Decimal  @db.Decimal(20, 6)
+  note        String   @default("")
+  createdAt   DateTime @default(now())
+}
+
+model Quotation {
+  id          String          @id @default(cuid())
+  sellerName  String
+  sellerEmail String
+  status      String          @default("pending") // "pending" | "approved" | "rejected" | "fulfilled"
+  notes       String          @default("")
+  total       Decimal         @db.Decimal(20, 6) // total INR
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+  items       QuotationItem[]
+}
+
+model QuotationItem {
+  id          String    @id @default(cuid())
+  quotationId String
+  quotation   Quotation @relation(fields: [quotationId], references: [id], onDelete: Cascade)
+  productId   String?
+  productName String    // snapshot at purchase time
+  sku         String    // snapshot at purchase time
+  orderedQty  Decimal   @db.Decimal(20, 6) // quantity in orderedUnit
+  orderedUnit String    // e.g. "kg" when product baseUnit is "g"
+  baseUnit    String    // product base unit at purchase time
+  baseQty     Decimal   @db.Decimal(20, 6) // converted quantity in baseUnit
+  basePrice   Decimal   @db.Decimal(20, 6) // product base price at purchase time
+  lineTotal   Decimal   @db.Decimal(20, 6) // baseQty * basePrice
+}
