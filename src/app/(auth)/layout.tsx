@@ -19,10 +19,16 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           flex-direction: column;
           justify-content: center;
           padding: 48px;
-          background: linear-gradient(135deg, #0d0d16 0%, #111120 100%);
-          border-right: 1px solid var(--border);
+          background: linear-gradient(135deg, #09090f 0%, #121224 100%);
+          border-right: 1px solid rgba(255, 255, 255, 0.08);
           position: relative;
           overflow: hidden;
+          
+          --text-primary: #ffffff;
+          --text-secondary: #cbd5e1;
+          --accent: #4ade80;
+          --accent-glow: rgba(74, 222, 128, 0.35);
+          --border: rgba(255, 255, 255, 0.04);
         }
 
         .auth-left::before {
@@ -155,7 +161,8 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           align-items: center;
           justify-content: center;
           padding: 48px 40px;
-          background: var(--bg-secondary);
+          background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+          border-left: 1px solid rgba(0, 0, 0, 0.04);
         }
 
         @media (max-width: 900px) {
